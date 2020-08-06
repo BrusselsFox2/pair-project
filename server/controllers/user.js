@@ -6,7 +6,8 @@ class UserController{
 
     static register(req, res, next){
         let {email, password} = req.body
-            User.create({email, password})
+        // console.log(req.body)
+        User.create({email, password})
             .then(user => {
                 res.status(201).json({msg: `${user.email} succesfuly registered`, id: user.id, email: user.email})
             })
