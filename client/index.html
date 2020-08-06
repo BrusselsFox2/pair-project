@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- google signin meta NOTE: isi content dgn client_id -->
+  <meta name="google-signin-client_id" content="">
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- css bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+  <!-- css tambahan -->
+  <link rel="stylesheet" href="style.css">
+  <title>Hackflix</title>
+</head>
+<body>
+
+  <header>
+
+  </header>
+
+
+  <!-- login page -->
+  <section id="login-page" class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="card rounded shadow" style="width: 18rem;">
+        <img src="assets/undraw_mobile_login_ikmv.svg" class="card-img-top" alt="login image">
+        <div class="card-body">
+          <h5 class="card-title lead mb-4"><b>Login</b></h5>
+          <form id="login-form" onsubmit="login(event)">
+            <div class="form-group">
+              <input type="email" class="form-control rounded" id="login-email" aria-describedby="emailHelp" name="email" placeholder="johndoe@mail.com">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control rounded" id="login-password" name="password" placeholder="password">
+            </div>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <button type="submit" class="btn btn-warning btn-block rounded">Log in</button>
+            <small id="small" class="form-text text-muted">Didn't have an account yet? <a href="" onclick="showRegister()">Sign up here</a>.</small>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- register page -->
+  <section id="register-page" class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="card shadow rounded" style="width: 18rem;">
+        <img src="assets/undraw_mobile_login_ikmv.svg" class="card-img-top" alt="register image">
+        <div class="card-body">
+          <h5 class="card-title lead mb-4"><b>Register</b></h5>
+          <form id="register-form" onsubmit="register(event)">
+            <div class="form-group">
+              <input type="email" class="form-control rounded" id="register-email" aria-describedby="emailHelp" name="email" placeholder="johndoe@mail.com">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control rounded" id="register-password" name="password" placeholder="password">
+            </div>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <button type="submit" class="btn btn-warning btn-block rounded">Sign Up</button>
+            <small id="small" class="form-text text-muted">Already have an account? <a href="" onclick="showLogin()">Log in here</a>.</small>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- home page NOTE ON HOLD -->
+  <section id="home-page" class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-3">
+        <button type="button" class="btn btn-warning rounded">Add Watchlist</button>
+        <img class="img-fluid" src="assets/undraw_movie_night_fldd.svg" alt="">
+        <div id="news">
+          <h5 class="lead"><b>News</b></h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item custom-text">Cras justo odio</li>
+            <li class="list-group-item custom-text">Dapibus ac facilisis in</li>
+            <li class="list-group-item custom-text">Morbi leo risus</li>
+            <li class="list-group-item custom-text">Porta ac consectetur ac</li>
+            <li class="list-group-item custom-text">Vestibulum at eros</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-7">
+        <h2>
+          <b class="brand">Hackflix</b>
+          <button type="button" class="btn btn-warning btn-md float-right rounded">Sign Out</button>
+        </h2>
+        <!-- <div class="vid">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+          </div>
+        </div> -->
+
+        <ul class="list-unstyled">
+          <li class="media bg-white p-2 shadow mt-3">
+            <img src="" class="img-fluid" alt="">
+            <div class="media-body p-1">
+              <button type="button" class="close float-right">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <span class="badge badge-pill badge-warning">Genre</span>
+              <a href=""></a>
+              <a href=""></a>
+            </div>
+          </li>
+        </ul>
+    </div>
+  </section>
+
+  <!-- search movie page -->
+
+  <!-- add movie -->
+  <section id="add-movie-page" class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-4">
+        <div class="mb-5 mt-5">
+          <img class="img-fluid" src="assets/undraw_home_cinema_l7yl.svg" alt="">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="shadow p-5 mb-5 rounded card">
+          <h5 class="mb-4"><b>Add Watchlist</b></h5>
+          <form id="add-form" onsubmit="addMovie()">
+            <div class="form-group">
+              <label for="add-title">Title</label>
+              <input type="text" class="form-control rounded" id="add-title" name="title">
+            </div>
+            <div class="form-group">
+              <label for="add-genre">Genre</label>
+              <!-- <input type="text" class="form-control rounded" id="add-genre" name="genre"> -->
+              <select class="custom-select rounded" id="add-genre">
+                <option selected disabled>Select Genre</option>
+                <option>Action</option>
+                <option>Animation</option>
+                <option>Drama</option>
+                <option>Documentation</option>
+                <option>Horror</option>
+                <option>Historical</option>
+                <option>Romance</option>
+                <option>Thriller</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="add-poster">Poster</label>
+              <input type="text" class="form-control rounded" id="add-poster" name="poster">
+            </div>
+            <div class="form-group">
+              <label for="add-preview">Preview</label>
+              <input type="text" class="form-control rounded" id="add-preview" name="preview">
+            </div>
+            <button type="submit" class="btn btn-warning btn-block rounded">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- edit watchlist -->
+
+  <!-- remove watchlist -->
+  
+
+  <!-- google singin js -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
+  <!-- jquery/ajax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <!-- main js -->
+  <script src="./main.js"></script>
+
+
+</body>
+</html>
