@@ -1,11 +1,12 @@
 const { Movie } = require('../models')
+const { where } = require('sequelize/types')
 
 class MovieController {
     static create(req, res, next) {
         let { title, genre, poster, review } = req.body
         console.log(req.body)
-        // let { id } = req.userData //Decoded
-        let obj = { title, genre, poster, review}
+        let { id } = req.userData
+        let obj = { title, genre, poster, review, userId: id}
         Movie.create(obj)
             .then(data => {
                 res.status(201).json({Movie: data})
@@ -16,8 +17,8 @@ class MovieController {
     }
 
     static show(req, res, next) {
-        // let { id } = req.userData // Decoded
-        Movie.findAll()
+        let { id } = req.userData
+        Movie.findAll({where: {userId: id}})
             .then(datas => {
                 res.status(200).json({Movies: datas})
             })
