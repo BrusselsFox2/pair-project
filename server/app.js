@@ -1,19 +1,17 @@
 require('dotenv').config()
-const express = require("express")
-const routers = require("./routers")
-const errorHandler = require("./middlewares/errorHandler")
-const cors = require("cors")
-
+const express = require('express')
 const app = express()
 const port = 3000
+const router = require('./routes/index')
+const errorhandler = require('./middlewares/errorHandler')
+const cors = require('cors')
 
 app.use(cors())
-
-app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.use(routers)
+app.use(router)
+app.use(errorhandler)
 
-app.use(errorHandler)
 
-app.listen(port, () => console.log(`Server running in ${process.env.NODE_ENV} at http://localhost:${process.env.PORT}`));
+app.listen(port, () => console.log(`Server running in  at http://localhost:${port}`));
