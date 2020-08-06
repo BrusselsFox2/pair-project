@@ -23,15 +23,48 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           msg: 'Title Required'
         }
-      }
+      },
+      allowNull: false
     },
-    genre: DataTypes.STRING,
-    released_date: DataTypes.DATE,
-    director: DataTypes.STRING,
-    plot: DataTypes.STRING,
-    poster: DataTypes.STRING,
-    preview: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    genre: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Genre Required'
+        },
+        notNull: {
+          msg: 'Genre Required'
+        }
+      },
+      allowNull: false
+    },
+    poster: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Poster Url Required'
+        },
+        notNull: {
+          msg: 'Poster URL Required'
+        }
+      },
+      allowNull: false
+    },
+    review: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Review URL Required'
+        },
+        notNull: {
+          msg: 'Review URL Required'
+        }
+      },
+      allowNull: false
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+    }
   }, {
     sequelize,
     modelName: 'Movie',

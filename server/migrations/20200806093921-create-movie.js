@@ -14,20 +14,14 @@ module.exports = {
       genre: {
         type: Sequelize.STRING
       },
-      released_date: {
-        type: Sequelize.DATE
-      },
-      director: {
-        type: Sequelize.STRING
-      },
-      plot: {
-        type: Sequelize.STRING
-      },
       poster: {
         type: Sequelize.STRING
       },
-      preview: {
+      review: {
         type: Sequelize.STRING
+      },
+      userId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
