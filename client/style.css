@@ -1,0 +1,45 @@
+* {
+  font-family: 'Libre Baskerville', serif;
+  color: whitesmoke !important
+}
+
+body {
+  background-color: rgb(43, 43, 43);
+}
+
+.card {
+  background-color: rgb(31, 31, 31) !important
+}
+
+.rounded {
+  border-radius: 12px !important
+}
+
+select, option, input, button {
+  color: rgb(31, 31, 31) !important
+}
+
+#news {
+  position: relative;
+  top: 80px;
+}
+
+.custom-text {
+  background-color: rgba(128, 128, 128, 0.103) !important;
+  color: whitesmoke !important ;
+}
+
+.img-fluid {
+  position: relative;
+  top: 50px;
+}
+
+.brand {
+  position: relative;
+  left: 100px;
+}
+
+.vid {
+  position: relative;
+  top: 80px;
+}
