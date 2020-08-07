@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
+    "password": "kisrakap",
     "database": "hackflix-app",
     "host": "localhost",
     "dialect": "postgres"
