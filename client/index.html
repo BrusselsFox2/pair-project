@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- google signin meta NOTE: isi content dgn client_id -->
-  <meta name="google-signin-client_id" content="">
+  <meta name="google-signin-client_id" content="639283781027-quc5c5k95tigqf1hdaufe3k8nlq0n9pr.apps.googleusercontent.com">
   <!-- google font -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <!-- css bootstrap -->
@@ -34,7 +34,7 @@
             <div class="form-group">
               <input type="password" class="form-control rounded" id="login-password" name="password" placeholder="password">
             </div>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <div class="g-signin2 btn" data-onsuccess="onSignIn" data-theme="dark"><br></div>
             <button type="submit" class="btn btn-warning btn-block rounded">Log in</button>
             <small id="small" class="form-text text-muted">Didn't have an account yet? <a href="" onclick="showRegister()">Sign up here</a>.</small>
           </form>
@@ -58,7 +58,7 @@
             <div class="form-group">
               <input type="password" class="form-control rounded" id="register-password" name="password" placeholder="password">
             </div>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <br>
             <button type="submit" class="btn btn-warning btn-block rounded">Sign Up</button>
             <small id="small" class="form-text text-muted">Already have an account? <a href="" onclick="showLogin()">Log in here</a>.</small>
           </form>
@@ -88,7 +88,7 @@
       <div class="col-7">
         <h2>
           <b class="brand">Hackflix</b>
-          <button type="button" class="btn btn-warning btn-md float-right rounded">Sign Out</button>
+          <button type="button" onclick="logout()" class="btn btn-warning btn-md float-right rounded">Sign Out</button>
         </h2>
         <!-- <div class="vid">
           <div class="embed-responsive embed-responsive-16by9">
