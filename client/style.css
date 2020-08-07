@@ -1,6 +1,6 @@
 * {
   font-family: 'Libre Baskerville', serif;
-  color: whitesmoke !important
+  /* color: whitesmoke !important */
 }
 
 body {
@@ -15,13 +15,17 @@ body {
   border-radius: 12px !important
 }
 
-select, option, input, button {
+select, option, input, button, textarea {
   color: rgb(31, 31, 31) !important
 }
 
 #news {
   position: relative;
   top: 80px;
+}
+
+.white {
+  color: whitesmoke !important;
 }
 
 .custom-text {
@@ -42,4 +46,17 @@ select, option, input, button {
 .vid {
   position: relative;
   top: 80px;
+}
+
+.mbahgugel {
+  color: rgb(31, 31, 31)  ;
+}
+
+#container-movies {
+  position: relative;
+  top: 50px;
+}
+
+#container-movies .p-1 {
+  margin-left: 15px;
 }
