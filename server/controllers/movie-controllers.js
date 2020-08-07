@@ -3,7 +3,7 @@ const { Movie } = require('../models')
 class MovieController {
     static create(req, res, next) {
         let { title, genre, poster, review } = req.body
-        console.log(req.body)
+        // console.log(req.body)
         let { id } = req.userData
         let obj = { title, genre, poster, review, userId: id}
         Movie.create(obj)
