@@ -285,9 +285,9 @@ function searchMovies(event) {
 function searchAdd(id) {
   event.preventDefault()
   console.log(tempMovie[id]);
-  $('#title').val(tempMovie[id].image.medium)
-  $('#poster').val(tempMovie[id].name)
-  $('#review').val(tempMovie[id].summary)
+  $('#add-poster').val(tempMovie[id].image.medium)
+  $('#add-title').val(tempMovie[id].name)
+  $('#add-review').val(tempMovie[id].summary)
   showAddForm()
 }
 
