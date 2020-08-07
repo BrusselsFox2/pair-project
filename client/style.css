@@ -1,6 +1,6 @@
 * {
   font-family: 'Libre Baskerville', serif;
-  color: whitesmoke !important
+  /* color: whitesmoke !important */
 }
 
 body {
@@ -15,7 +15,7 @@ body {
   border-radius: 12px !important
 }
 
-select, option, input, button {
+select, option, input, button, textarea {
   color: rgb(31, 31, 31) !important
 }
 
@@ -24,9 +24,21 @@ select, option, input, button {
   top: 80px;
 }
 
+.white {
+  color: whitesmoke !important;
+}
+
 .custom-text {
   background-color: rgba(128, 128, 128, 0.103) !important;
   color: whitesmoke !important ;
+}
+
+.custom-text a {
+  color: gold;
+}
+
+.custom-text a:hover {
+  color: whitesmoke;
 }
 
 .img-fluid {
@@ -42,4 +54,59 @@ select, option, input, button {
 .vid {
   position: relative;
   top: 80px;
+}
+
+.mbahgugel {
+  color: rgb(31, 31, 31)  ;
+}
+
+#container-movies {
+  position: relative;
+  top: 10px;
+}
+
+#container-movies .p-1 {
+  margin-left: 15px;
+}
+
+#trend {
+  position: relative;
+  top: 50px;
+}
+
+#trend .p-1 {
+  margin-left: 15px;
+}
+
+.badge {
+  letter-spacing: 1px !important;
+}
+
+.add-button {
+  width: 25px;
+}
+
+.inline {
+  display: inline !important;
+}
+
+.justify-text {
+  text-align: justify;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.smol {
+  font-size: 12px;
+}
+
+.nav {
+  background-color: rgba(128, 128, 128, 0.103) !important;
+}
+
+.back-search {
+  position: relative;
+  top: 10px;
 }
