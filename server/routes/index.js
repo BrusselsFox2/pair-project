@@ -10,11 +10,10 @@ router.use('/movies',movieRoute)
 router.use('/search', tvMazeRoute)
 
 const newsRouter = require('./news')
-const NewsController = require('../controllers/NewsController')
+const trendingRouter = require('./trending')
+
 
 router.use('/news', newsRouter)
-
-// News API
-router.get('/news', NewsController.getNews)
+router.use('/trending', trendingRouter)
 
 module.exports = router
