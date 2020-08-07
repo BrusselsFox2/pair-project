@@ -4,10 +4,35 @@ let tempMovie = []
 
 $( document ).ready(function() {
   checkAuth()
-  // $('#register-page').hide()
-  // $('#login-page').show()
-  // $('#add-movie-page').hide()
-  // $('#home-page').hide()
+
+
+  function onSignIn(googleUser) {
+    console.log("google sign in berhasil");
+    
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+   var id_token = googleUser.getAuthResponse().id_token;
+  
+    $.ajax({
+        method: `post`,
+        url: `${host}/users/googlelogin`,
+        data: {
+            id_token
+        }
+    })
+        .done(data => {
+            console.log(data.access_token, "ini data akses token")
+            console.log(data.responseJSON);
+            localStorage.setItem('access_token', data.access_token)
+            checkAuth()
+        
+        }).fail(err => {
+            console.log(err, "ini error gugel login")
+        })
+  }
 
 
 })
@@ -228,7 +253,7 @@ function searchMovies(event) {
   })
     .done(res => {
       console.log(res, '>>>>>>>>>>>>>>>>>ini res');
-      tempMovie = res
+      tempMovie = res.Movies
       event.preventDefault()
       $('#container-search').empty()
       res.Movies.forEach((movie, i) => {
@@ -259,10 +284,11 @@ function searchMovies(event) {
 
 function searchAdd(id) {
   event.preventDefault()
+  console.log(tempMovie[id]);
+  $('#title').val(tempMovie[id].image.medium)
+  $('#poster').val(tempMovie[id].name)
+  $('#review').val(tempMovie[id].summary)
   showAddForm()
-  $('#title').val(tempMovie[id].show.image.medium)
-  $('#poster').val(tempMovie[id].show.name)
-  $('#review').val(tempMovie[id].show.summary)
 }
 
 function fetchNews() {
@@ -318,10 +344,10 @@ function fetchTrending() {
 
         $('#container-trending').append(temp)
       }
-      // res.results.forEach(article => {
-      // });
     })
     .fail(err => {
       console.log(err.responseJSON.error)
     })
 }
+
+
