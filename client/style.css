@@ -33,6 +33,14 @@ select, option, input, button, textarea {
   color: whitesmoke !important ;
 }
 
+.custom-text a {
+  color: gold;
+}
+
+.custom-text a:hover {
+  color: whitesmoke;
+}
+
 .img-fluid {
   position: relative;
   top: 50px;
@@ -54,9 +62,51 @@ select, option, input, button, textarea {
 
 #container-movies {
   position: relative;
-  top: 50px;
+  top: 10px;
 }
 
 #container-movies .p-1 {
   margin-left: 15px;
+}
+
+#trend {
+  position: relative;
+  top: 50px;
+}
+
+#trend .p-1 {
+  margin-left: 15px;
+}
+
+.badge {
+  letter-spacing: 1px !important;
+}
+
+.add-button {
+  width: 25px;
+}
+
+.inline {
+  display: inline !important;
+}
+
+.justify-text {
+  text-align: justify;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.smol {
+  font-size: 12px;
+}
+
+.nav {
+  background-color: rgba(128, 128, 128, 0.103) !important;
+}
+
+.back-search {
+  position: relative;
+  top: 10px;
 }

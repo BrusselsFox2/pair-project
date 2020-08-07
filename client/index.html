@@ -72,20 +72,16 @@
   </section>
 
 
-  <!-- home page NOTE ON HOLD -->
+  <!-- home page NOTE ON PROGRESS -->
   <section id="home-page" class="container">
     <div class="row justify-content-center mt-5">
-      <div class="col-3">
+      <div class="col-3 inline">
         <button type="button" class="btn btn-warning rounded" onclick="showAddForm()">Add Watchlist</button>
+        <button type="button" class="btn btn-warning rounded" onclick="showSearch()">Search</button>
         <img class="img-fluid" src="assets/undraw_movie_night_fldd.svg" alt="">
         <div id="news">
           <h5 class="lead white"><b>News</b></h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item custom-text">Cras justo odio</li>
-            <li class="list-group-item custom-text">Dapibus ac facilisis in</li>
-            <li class="list-group-item custom-text">Morbi leo risus</li>
-            <li class="list-group-item custom-text">Porta ac consectetur ac</li>
-            <li class="list-group-item custom-text">Vestibulum at eros</li>
+          <ul class="list-group list-group-flush" id="container-news">
           </ul>
         </div>
       </div>
@@ -100,12 +96,36 @@
           </div>
         </div> -->
 
+
+        <!-- trending -->
+        <div class="container" id="trend">
+          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" id="container-trending">
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+        <br>
+        <br>
+        <!-- watchlist -->
+        <h5 class="white center-text">My Watchlist</h5>
         <ul class="list-unstyled" id="container-movies">
         </ul>
     </div>
   </section>
-
-  <!-- search movie page -->
 
   <!-- add movie -->
   <section id="add-movie-page" class="container">
@@ -156,7 +176,7 @@
               <input type="text" class="form-control rounded" id="add-poster" name="poster">
             </div>
             <div class="form-group">
-              <label for="add-review">Review</label>
+              <label for="add-review">Summary</label>
               <textarea class="form-control rounded" id="add-review" name="review"></textarea>
             </div>
             <button type="submit" class="btn btn-warning btn-block rounded">Add</button>
@@ -166,12 +186,36 @@
     </div>
   </section>
 
-  <!-- edit watchlist -->
+  <!-- search movie -->
+  <section id="search-movie-page" class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-4">
+        <br>
+        <br>
+        <br>
+        <button type="button" class="btn btn-warning back-search" onclick="checkAuth()">Back</button>
+        <img class="img-fluid" src="./assets/undraw_press_play_bx2d.svg" alt="">
+      </div>
+      <div class="col-6">
+        <h5 class="white"><b>Search Movies</b></h5>
+        <br>
+        <br>
+        <form class="form-row" onsubmit="searchMovies(event)">
+          <div class="form-group col-md-9">
+            <input type="text" class="form-control" placeholder="keyword" id="search-keyword">
+          </div>
+          <div class="col-3">
+            <button type="submit" class="btn btn-warning btn-block">Submit</button>
+          </div>
+        </form>
+        <ul class="list-unstyled" id="container-search">
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <!-- remove watchlist -->
 
-
-  
 
   <!-- google singin js -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -179,9 +223,14 @@
   <!-- jquery/ajax -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
+
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
   <!-- main js -->
   <script src="./main.js"></script>
-
 
 </body>
 </html>

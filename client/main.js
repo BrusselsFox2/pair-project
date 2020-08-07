@@ -1,4 +1,5 @@
 const host = "http://localhost:3000";
+let tempMovie = []
 
 
 $( document ).ready(function() {
@@ -17,6 +18,7 @@ function showLogin() {
   $('#login-page').show()
   $('#add-movie-page').hide()
   $('#home-page').hide()
+  $('#search-movie-page').hide()
 }
 
 function showRegister() {
@@ -25,6 +27,7 @@ function showRegister() {
   $('#login-page').hide()
   $('#add-movie-page').hide()
   $('#home-page').hide()
+  $('#search-movie-page').hide()
 }
 
 
@@ -34,12 +37,16 @@ function checkAuth() {
     $('#register-page').hide()
     $('#add-movie-page').hide()
     $('#home-page').show()
+    $('#search-movie-page').hide()
     fetchMovie()
+    fetchNews()
+    fetchTrending()
   } else {
     $('#login-page').show()
     $('#register-page').hide()
     $('#add-movie-page').hide()
     $('#home-page').hide()
+    $('#search-movie-page').hide()
   }
 }
 
@@ -103,6 +110,7 @@ function showAddForm() {
   $('#register-page').hide()
   $('#add-movie-page').show()
   $('#home-page').hide()
+  $('#search-movie-page').hide()
 }
 
 function addMovie() {
@@ -111,11 +119,12 @@ function addMovie() {
   $.each($("input[name='genre']:checked"), function(){            
     genres.push($(this).val());
   });
+
   const genre = genres.join()
   const title = $('#add-title').val()
-  // const genre = $('#add-genre').val()
   const poster = $('#add-poster').val()
   const review = $('#add-review').val()
+  console.log(genres, genre, title, poster, review);
 
   $.ajax({
     url: `${host}/movies`, 
@@ -193,6 +202,124 @@ function fetchMovie() {
 
         $('#container-movies').append(temp)
       });
+    })
+    .fail(err => {
+      console.log(err.responseJSON.error)
+    })
+}
+
+function showSearch() {
+  $('#login-page').hide()
+  $('#register-page').hide()
+  $('#add-movie-page').hide()
+  $('#home-page').hide()
+  $('#search-movie-page').show()
+}
+
+function searchMovies(event) {
+  event.preventDefault()
+  let query = $('#search-keyword').val()
+  $.ajax({
+    url: `${host}/search/${query}`,
+    method: 'post',
+    headers: {
+      access_token: localStorage.access_token
+    }
+  })
+    .done(res => {
+      console.log(res, '>>>>>>>>>>>>>>>>>ini res');
+      tempMovie = res
+      event.preventDefault()
+      $('#container-search').empty()
+      res.Movies.forEach((movie, i) => {
+        let poster = movie.image ? movie.image.medium : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR7RbuAj7zoRZSIDcV_nz2LyZZjwiOETmn7kg&usqp=CAU' 
+        let genre = movie.genres.join()
+        let title = movie.name
+        let summary = movie.summary
+        let temp = `
+        <li class="media bg-white p-2 shadow mt-3">
+          <img src="${poster}"  alt="">
+          <div class="media-body p-1">
+            <button type="button" class="close float-right" onclick="">
+              <span class="badge badge-warning" onclick="searchAdd(${i})"><img src="./assets/more.svg" alt="" class="add-button"></span>
+            </button>
+            <span class="badge badge-warning text-uppercase">${genre}</span>
+            <h5><b>${title}</b></h5>
+            <span class="text-muted">${summary}</span>
+          </div>
+        </li>
+        `
+        $('#container-search').append(temp)
+      });
+    })
+    .fail(err => {
+      console.log(err.responseJSON.error)
+    })
+}
+
+function searchAdd(id) {
+  event.preventDefault()
+  showAddForm()
+  $('#title').val(tempMovie[id].show.image.medium)
+  $('#poster').val(tempMovie[id].show.name)
+  $('#review').val(tempMovie[id].show.summary)
+}
+
+function fetchNews() {
+  $.ajax({
+    url: `${host}/news`,
+    method: 'get',
+    headers: {
+      access_token: localStorage.access_token
+    }
+  })
+    .done(res => {
+      $('#container-news').empty()
+      res.news.articles.forEach(article => {
+        let temp = `
+        <li class="list-group-item custom-text">
+          <a href="${article.url}" class="justify-text">${article.title}</a>
+          <small id="small" class="form-text text-muted">${article.author}</small>
+          <br>
+          <p class="justify-text smol">${article.description}</p>
+        </li>
+        `
+
+        $('#container-news').append(temp)
+      });
+    })
+    .fail(err => {
+      console.log(err.responseJSON.error)
+    })
+}
+
+function fetchTrending() {
+  $.ajax({
+    url: `${host}/trending`,
+    method: 'get',
+    headers: {
+      access_token: localStorage.access_token
+    }
+  })
+    .done(res => {
+      console.log(res)
+      $('#container-trending').empty()
+      for (let i = 1; i < 4; i++) {
+        let temp = `
+        <div class="carousel-item ${i === 1 ? 'active' : ''}">
+        <img src="https://image.tmdb.org/t/p/w500${res.trending.results[i].backdrop_path}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-md-block">
+          <h5>${res.trending.results[i].title}</h5>
+          <p>${res.trending.results[i].release_date}</p>
+        </div>
+      </div>
+        </div>
+        `
+
+        $('#container-trending').append(temp)
+      }
+      // res.results.forEach(article => {
+      // });
     })
     .fail(err => {
       console.log(err.responseJSON.error)
