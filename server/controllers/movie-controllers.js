@@ -1,5 +1,4 @@
 const { Movie } = require('../models')
-const { where } = require('sequelize/types')
 
 class MovieController {
     static create(req, res, next) {
