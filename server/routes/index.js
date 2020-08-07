@@ -3,13 +3,12 @@ const router = require('express').Router()
 const movieRoute = require('./movie-route')
 const userRouter = require('./user')
 const newsRouter = require('./news')
-const NewsController = require('../controllers/NewsController')
+const trendingRouter = require('./trending')
+
 
 router.use('/users', userRouter)
 router.use('/movies', movieRoute)
 router.use('/news', newsRouter)
-
-// News API
-router.get('/news', NewsController.getNews)
+router.use('/trending', trendingRouter)
 
 module.exports = router
